@@ -3,27 +3,69 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello Rigo with Vanilla.js</title>
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
-      integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+    <title>Random Card Generator</title>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
-    />
-    <link rel="shortcut icon" href="./4geeks.ico" />
+    ></script>
+    <script>
+      /* 
+      Thanks to the way the academy developed this template, this piece of code needs 
+      to be here in the index.html to work. If you're curious you can look up 'main.bundle.js'
+      in this/your project. 
+      
+      If doing local or in a different environment you can leave this code in its appropriate .js file) 
+      */
+
+      var queryString = window.location.search;
+      var urlParams = new URLSearchParams(queryString);
+      var check = urlParams.get("refresh");
+
+      if (check === "yes") {
+        setTimeout(() => window.location.replace(window.location.href), 10000);
+      }
+
+      function refresh() {
+        if (check === null) {
+          window.location.replace(window.location.href + "?refresh=yes");
+        } else {
+          window.location.replace(
+            window.location.href.replace("?refresh=yes", "")
+          );
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
-    <div class="container-fluid text-center">
-      <h1 class="mt-5">Hello Rigo!</h1>
-      <img src="./rigo-baby.jpg" />
-      <p class="alert alert-warning mt-4">
-        If this text is <b>not</b> centered and <b>yellow</b>, you probably have
-        an error
-      </p>
-      <div class="fixed-bottom p-4">
-        Made with ❤️ by
-        <a href="https://www.4geeksacademy.com">4Geeks Academy</a>
+    <div class="">
+      <div id="card" class="text-center container">
+        <div
+          id="top"
+          class="position-absolute start-0 top-0 card-icons fs-1 pt-1 p-3"
+        ></div>
+        <p
+          id="value"
+          class="position-absolute translate-middle top-50 start-50"
+        ></p>
+        <div
+          id="bot"
+          class="position-absolute bottom-0 end-0 rotation fs-1 pb-1 p-3"
+        ></div>
       </div>
+
+      <button
+        onClick="window.location.reload();"
+        type="button"
+        class="btn mybtn mx-auto mt-3"
+      >
+        Change Card
+      </button>
+      <button onClick="refresh();" class="btn mybtn mx-auto">
+        Refresh
+      </button>
     </div>
   </body>
 </html>
