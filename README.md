@@ -1,5 +1,10 @@
 # Random Card Generatos using Vanilla.js ✔️
 
+
+https://github.com/user-attachments/assets/fe066539-a849-458e-bbc0-b8435331ab1c
+
+
+
 ## Available Scripts
 
 In the project directory, you can run:
